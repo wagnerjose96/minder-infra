@@ -1,0 +1,15 @@
+#!groovy
+def run(String serviceName) {
+    gitlabCommitStatus {
+        stage('Checkout') {
+            checkout scm
+        }
+        stage('Build') {
+            sh 'mvn clean install -DskipTests'
+        }
+        stage('Test') {
+                sh 'mvn clean install -DskipTests'
+        }
+    }
+}
+return this
