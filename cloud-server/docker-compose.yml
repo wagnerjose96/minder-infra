@@ -32,8 +32,8 @@ services:
     container_name: sonarqube
     restart: always
     environment:
-      - SONARQUBE_JDBC_USERNAME=admin
-      - SONARQUBE_JDBC_PASSWORD=admin
+      - SONARQUBE_JDBC_USERNAME=contrat
+      - SONARQUBE_JDBC_PASSWORD=contrat
       - SONARQUBE_JDBC_URL=jdbc:postgresql://postgresdb:5432/sonar
 
   postgresdb:
