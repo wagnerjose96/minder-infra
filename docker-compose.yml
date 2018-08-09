@@ -60,4 +60,6 @@ volumes:
 
 
 networks:
-  default: bridge
+  default:
+    external:
+      name: contrat_net
