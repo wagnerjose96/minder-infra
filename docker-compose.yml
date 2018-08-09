@@ -1,0 +1,63 @@
+
+version: "3"
+
+services:
+
+  nginx:
+    build: ./nginx
+    container_name: nginx
+    restart: always
+    depends_on:
+      - jenkins
+      - sonarqube
+      - adminer
+    links:
+      - jenkins
+      - sonarqube
+      - adminer
+    ports:
+      - 80:80
+    volumes:
+      - ./www:/var/www/html
+
+  jenkins:
+    build: ./jenkins
+    container_name: jenkins
+    restart: always
+    volumes:
+      - jenkins-data:/var/jenkins_home
+
+  sonarqube:
+    image: sonarqube:7.0
+    container_name: sonarqube
+    restart: always
+    environment:
+      - SONARQUBE_JDBC_USERNAME=admin
+      - SONARQUBE_JDBC_PASSWORD=admin
+      - SONARQUBE_JDBC_URL=jdbc:postgresql://postgresdb:5432/sonar
+
+  postgresdb:
+    image: postgres:9.6.3
+    container_name: postgresdb
+    restart: always
+    environment:
+       - POSTGRES_DB=sonar
+       - POSTGRES_USER=contrat
+       - POSTGRES_PASSWORD=contrat
+
+  adminer:
+    image: adminer
+    container_name: adminer
+    restart: always
+    
+    volumes:
+      - adminer-data:/adminer-data
+
+volumes:
+  jenkins-data:
+  adminer-data:
+
+
+
+networks:
+  default: bridge
