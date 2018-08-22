@@ -8,7 +8,7 @@
 # pull base image Ubuntu 16.04 LTS (Xenial)
 FROM ubuntu:xenial
 
-MAINTAINER Mateus Seron (mateus.seron@hotmail.com.br)
+LABEL MAINTAINER Wagner Junior (wagner.junior@accellog.com)
 
 # this is a non-interactive automated build - avoid some warning messages
 ENV DEBIAN_FRONTEND noninteractive

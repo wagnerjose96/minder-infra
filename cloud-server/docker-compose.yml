@@ -1,5 +1,5 @@
 
-version: "3"
+version: "2"
 
 services:
 
@@ -32,8 +32,8 @@ services:
     container_name: sonarqube
     restart: always
     environment:
-      - SONARQUBE_JDBC_USERNAME=contrat
-      - SONARQUBE_JDBC_PASSWORD=contrat
+      - SONARQUBE_JDBC_USERNAME=minder
+      - SONARQUBE_JDBC_PASSWORD=minder
       - SONARQUBE_JDBC_URL=jdbc:postgresql://postgresdb:5432/sonar
 
   postgresdb:
@@ -42,8 +42,8 @@ services:
     restart: always
     environment:
        - POSTGRES_DB=sonar
-       - POSTGRES_USER=contrat
-       - POSTGRES_PASSWORD=contrat
+       - POSTGRES_USER=minder
+       - POSTGRES_PASSWORD=minder
 
   adminer:
     image: adminer
@@ -62,4 +62,4 @@ volumes:
 networks:
   default:
     external:
-      name: contrat_net
+      name: minder_net
