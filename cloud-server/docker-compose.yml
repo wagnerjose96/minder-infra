@@ -18,8 +18,6 @@ services:
       - java
     ports:
       - 80:80
-      - 9090:9090
-      - 9000:9000
     volumes:
       - ./www:/var/www/html
 
@@ -67,9 +65,7 @@ services:
 volumes:
   jenkins-data:
   adminer-data:
-
-
-
+    
 networks:
   default:
     external:
