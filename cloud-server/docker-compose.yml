@@ -27,14 +27,14 @@ services:
     restart: always
     volumes:
       - jenkins-data:/var/jenkins_home
-      - java-deploy:/deploy
+      - deploy:/var/jenkins_home
 
   java:
     build: ./java
     container_name: java
     restart: always
     volumes:
-      - java-deploy:/deploy
+      - deploy:/var/jenkins_home
 
   sonarqube:
     image: sonarqube
@@ -65,7 +65,7 @@ services:
 volumes:
   jenkins-data:
   adminer-data:
-    
+
 networks:
   default:
     external:
