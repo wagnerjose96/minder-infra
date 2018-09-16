@@ -11,10 +11,12 @@ services:
       - jenkins
       - sonarqube
       - adminer
+      - java
     links:
       - jenkins
       - sonarqube
       - adminer
+      - java
     ports:
       - 80:80
     volumes:
@@ -26,6 +28,14 @@ services:
     restart: always
     volumes:
       - jenkins-data:/var/jenkins_home
+      - java-deploy:/deploy
+
+  java:
+    build: ./java
+    container_name: java
+    restart: always
+    volumes:
+      - java-deploy:/deploy
 
   sonarqube:
     image: sonarqube:7.0
