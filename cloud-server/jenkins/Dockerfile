@@ -23,8 +23,8 @@ ENV JAVA_HOME /usr
 ENV PATH $JAVA_HOME/bin:$PATH
 
 # get maven 3.2.2 and verify its checksum
-RUN wget --no-verbose -O /tmp/apache-maven-3.2.2.tar.gz http://archive.apache.org/dist/maven/maven-3/3.2.2/binaries/apach$
-  echo "87e5cc81bc4ab9b83986b3e77e6b3095 /tmp/apache-maven-3.2.2.tar.gz" | md5sum -c
+RUN wget --no-verbose -O /tmp/apache-maven-3.2.2.tar.gz http://archive.apache.org/dist/maven/maven-3/3.2.2/binaries/apache-maven-3.2.2-bin.tar.gz
+#echo "87e5cc81bc4ab9b83986b3e77e6b3095 /tmp/apache-maven-3.2.2.tar.gz" | md5sum -c
 
 # install maven
 RUN tar xzf /tmp/apache-maven-3.2.2.tar.gz -C /opt/; \
@@ -41,5 +41,5 @@ ENV JENKINS_HOME /var/jenkins_home
 # configure the container to run jenkins, mapping container port 8080 to that host port
 ENTRYPOINT ["java", "-jar", "/var/jenkins_home/jenkins.war"]
 EXPOSE 8080
-
+EXPOSE 5432
 CMD [""]
