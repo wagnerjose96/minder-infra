@@ -20,6 +20,8 @@ RUN \
 # Define commonly used JAVA_HOME variable
 ENV JAVA_HOME /usr
 ENV PATH $JAVA_HOME/bin:$PATH
+ENV deploy /var/jenkins_home/
 
 # Define default command.
+ENTRYPOINT ["java", "-jar", "/var/jenkins_home/jenkins.war"]
 CMD ["bash"]
